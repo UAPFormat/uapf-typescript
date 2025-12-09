@@ -1,0 +1,21 @@
+{
+  "name": "uapf-parser",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "uapf": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "validate": "node dist/cli.js validate"
+  },
+  "dependencies": {
+    "ajv": "^8.0.0",
+    "adm-zip": "^0.5.10"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

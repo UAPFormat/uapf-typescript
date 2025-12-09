@@ -1,0 +1,13 @@
+{
+  "name": "uapf",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Unified Algorithmic Process Format schemas and examples.",
+  "license": "MIT",
+  "scripts": {
+    "lint:schemas": "ajv validate -s schemas/*.json"
+  },
+  "devDependencies": {
+    "ajv": "^8.12.0"
+  }
+}
