@@ -1,0 +1,35 @@
+{
+  "name": "uapf-ip",
+  "version": "0.1.0",
+  "description": "Host SDK for the UAPF Integration Protocol (UAPF-IP). Embed in any host system — DMS, ERP, CRM, SaaS app — to participate in UAPF process execution.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "example:host": "tsx example/simple-host.ts"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
+  },
+  "peerDependencies": {
+    "express": "^4.0.0 || ^5.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": ["uapf", "uapf-ip", "process-orchestration", "bpmn", "dmn", "workflow"],
+  "license": "MIT",
+  "homepage": "https://github.com/UAPFormat/UAPF-IP",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UAPFormat/uapf-typescript.git",
+    "directory": "node-uapf-ip"
+  }
+}

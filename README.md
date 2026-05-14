@@ -1,96 +1,26 @@
 # uapf-typescript
 
-Official **TypeScript / Node.js parser & validator** for [UAPF](https://github.com/UAPFormat/UAPF-spec) packages.
+TypeScript implementations and SDKs for the [UAPF](https://github.com/UAPFormat) ecosystem.
 
-This library lets you load `.uapf` archives in Node/TypeScript services, validate them, and access their contents using typed interfaces.
+This repository is a workspace containing:
 
-> Status: Early draft – API and package name may change before UAPF v1.0.
+| Package | Purpose | Status |
+|---|---|---|
+| [`node-uapf`](./node-uapf) | Parser + validator for `.uapf` package files | v0.1 |
+| [`node-uapf-ip`](./node-uapf-ip) | Host SDK for the [UAPF Integration Protocol](https://github.com/UAPFormat/UAPF-IP) — embed in DMS / ERP / CRM / any host system to participate in UAPF process execution | v0.1 |
 
----
+## Quick paths
 
-## Installation
-
-Until this package is published to npm, use a Git dependency or local checkout:
-
-```bash
-git clone https://github.com/UAPFormat/uapf-typescript.git
-cd uapf-typescript
-npm install
-npm run build
-```
-
-In your own project you can reference the built package via `file:` in `package.json`, or depend on the GitHub repo directly.
-
----
-
-## Quick example
-
-```ts
-import { loadUapfPackage } from "uapf-typescript"; // adjust to actual export
-
-async function main() {
-  const pkg = await loadUapfPackage("examples/acme-docflow.uapf");
-
-  // Validate against official JSON Schemas
-  await pkg.validate();
-
-  console.log(pkg.manifest.id, pkg.manifest.version);
-  console.log(pkg.agents.roles);
-  console.log(pkg.integration.mcpTools);
-}
-
-main().catch(console.error);
-```
-
-(Adapt function and property names to your real API.)
-
----
-
-## Features
-
-- **Zip package loading**
-  - Load from filesystem paths, buffers, or streams.
-
-- **Schema validation**
-  - Uses schemas from [`UAPF-spec`](https://github.com/UAPFormat/UAPF-spec).
-
-- **Typed access**
-  - TypeScript interfaces for:
-    - `manifest`
-    - `agents` (roles, capabilities, bindings)
-    - `decisions`
-    - `integration` (MCP tools, A2A schemas, APIs)
-    - `metadata`
-
-- **Integration-friendly**
-  - Intended for:
-    - UAPF viewers & web tooling (`uapf-viewer`)
-    - Node-based UAPF engines and MCP servers
-    - Orchestrators running in Node (LangChain JS, LangGraph, etc.)
-
----
+- **You want to read or validate a `.uapf` file in Node.js?** Use [`node-uapf`](./node-uapf).
+- **You're building a host that needs to invoke UAPF processes and serve capability callbacks?** Use [`node-uapf-ip`](./node-uapf-ip).
 
 ## Roadmap
 
-- Publish to npm under an official scope (e.g. `@uapf/ts`).
-- Add a CLI `uapf-validate`.
-- Helpers for mapping UAPF agents → MCP tools / LLM function signatures.
-
----
-
-## Development
-
-```bash
-git clone https://github.com/UAPFormat/uapf-typescript.git
-cd uapf-typescript
-npm install
-npm run lint
-npm test
-```
-
----
+v0.2 (planned):
+- DID-VC signing of capability invocations (currently optional bearer token).
+- Streaming session state for long-running processes.
+- Python and Go counterparts at `UAPFormat/uapf-python` and `UAPFormat/uapf-go`.
 
 ## License
 
-MIT – see [`LICENSE`](LICENSE) if present, or follow org-wide license.
-
+MIT.
